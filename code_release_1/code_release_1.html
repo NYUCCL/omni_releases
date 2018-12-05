@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../favicon.ico">
 
-    <title>Optimizing Memory Using Neural Imaging: Data Release 2</title>
+    <title>Optimizing Memory Using Neural Imaging: Code Release 1</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -134,59 +134,33 @@
     <div class="container">
       <div class="page-header">
         <h3><a href="index.html">Optimizing Memory using Neural Information (OMNI)</a></h3>
-        <h1><span class="datatext">Data Release 2</span>: Forgetting curves and MRI activations from independent components analysis</h1>
+        <h1><span class="datatext">Code Release 1</span>: </h1>
       </div>
       <p class="lead">
-      Data Release 2 consists of a CSV (comma delimited) datafile containing information about the memory performance of
-      N=190 participants memorizing 45 Lithuanian-English word translations.  Each item was presented five times for
-      study and then people were tested at a variety of delays ranging from 0 to 168 hours after the initial
-      study session.  Participants also provided a judgement of learning (JOL) on a 100 point scale after study
-      rating the likelihood they believed they would remember the word pair at test.
+      Code Release 1 consists of code for estimating the two-state recall-only model in our <a href="http://educationaldatamining.org/files/conferences/EDM2018/papers/EDM2018_paper_158.pdf"> Knowledge Tracing Using the Brain</a> paper that we presented at <a href ="http://educationaldatamining.org/EDM2018/">Educational Data Mining 2018</a>. 
       <br>
       <br>
-      This release also includes fMRI activation estimates from the study trials from a subset of the participants. The activation estimates are the single trial response (average of timepoints 4-8 post trial onset) for each of a set of independent fmri components identified using group ICA implemented using the <a href="http://mialab.mrn.org/software/gift/">GIFT-ICA toolbox</a>.
-      </p>
       
-      
-      <p class="lead">
-	  The purpose of this data release is to share a relatively large dataset of human memory
-	  performance on a simple list-learning second language acquisition task.  The data can be used to
-	  help build and test models of human memory.
       </p>
       
       <hr>
       
       <img src="images/osf_logo.png" width="40" style="margin: 5px" align="left">
       <img src="images/github_logo.png" width="40" style="margin: 5px" align="left">
-	  The data is available on github here: <a href="https://github.com/NYUCCL/omni_releases/tree/master/data_release_2">https://github.com/NYUCCL/omni_releases/tree/master/data_release_2</a>.<br>
+	  The code is available on github here: <a href="https://github.com/NYUCCL/omni_releases/tree/master/code_release_1">https://github.com/NYUCCL/omni_releases/tree/master/code_release_1</a>.<br>
 	  
-	  The data and Jupyter notebook is also downloadable from Open Science Framework: <a href="https://osf.io/c5kn7/">https://osf.io/c5kn7/</a>.
-
+    <!--
+	  The code is also downloadable from Open Science Framework: <a href="https://osf.io/c5kn7/"></a>.
+    -->
       <hr>
       
       <p>
-      The datafile also includes a <a href="http://jupyter.org/">Jupyter</a> 
-      notebook that describes the structure of the CSV file and shows a few example analyses with the datafile including a plot of the overall
-      performance as a function of delay between study and test and the relationship that judgements
-      of learning have to performance.  As an example, it shows how to use the data frame (using Pandas)
-      to plot the overall percent of the total list words that were recalled by individual participants
-      as a function of study-test lag:
+        The Stan code for the model can be found in the <code>models</code> folder. The only difference between the two files there is that one is setup to make use of Stan's <a href="https://pystan.readthedocs.io/en/latest/threading_support.html">new multithreading capacity</a>.
       </p>
-      
-      <img src="images/data/data_release_1-delay.png" valign="center">
-      
-      <p>
-	  In addition, it shows how average JOL rating was strongly correlated with mean recall accuracy.
-      </p>
-      <img src="images/data/data_release_1-jols.png" valign="center">
-
 
       <p>
-	  There are also examples for examining the MRI activations on each study trial for a particular word 
-	  in a single participant.
+        The main files needed to run the code can be found in the <code>shell_scripts</code> folder. This contains three shell scripts for running the Stan models in batch mode on a slurm HPC cluster. <code>run_two_state_logit_model_fmri_subs_kfcv.s</code> divides the data from subjects who were in the fMRI into ten folds as described in the paper and estimates the models holding one fold out. <code>run_two_state_logit_model_loocv.s</code> estimates the models by holding one fMRI subject's data out. <code>run_two_state_logit_parallel_model_loocv.s</code> does the same thing but making use of parallelization. You can estimate all the models in parallel on your own cluster by calling <code> sbatch --array=0-n run_two_state_logit_model_loocv.s </code>. <code> n </code> should be the number of folds, i.e. 10 in the kfold case.
       </p>
-
-      <img src="images/data/data_release_2-ICs.png" valign="center">
 	  <hr>
 	  
 	  
