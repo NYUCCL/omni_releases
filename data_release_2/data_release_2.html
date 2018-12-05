@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../favicon.ico">
+
+    <title>Optimizing Memory Using Neural Imaging: Data Release 2</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="styles.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="js/ie-emulation-modes-warning.js"></script>
+
+	<!-- fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Source+Sans+Pro" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+   <script src="js/jquery-1.9.1.min.js" ></script>
+  
+        <style>
+        .exps {
+          padding: 2% 2% 0;
+          background: white;
+          position: relative;
+          min-height: 80px;
+          overflow: hidden;
+          -webkit-backface-visibility: hidden;
+        }
+     
+     
+        .exps  .mix,
+        .exps  .gap{
+          display: inline-block;
+          text-align: left;
+          clear: left;
+        }
+
+     
+        .exps  .mix{
+          background: white;
+          margin-bottom: 2%;
+          display: none;
+          min-height: 80x;
+          overflow: hidden;
+          vertical-align: top;
+
+        }
+     
+        .exps  .mix.category-1{
+        }
+     
+        .exps  .mix.category-2{
+        }
+/*     
+        .exps  .mix:after{
+          color: black;
+          font-size: 16px;
+          display: inline-block;
+          vertical-align: top;
+          font-weight: 700;
+        }*/
+        
+        .blogbutton {
+			background: #88da6c;
+        }
+        .blogtext{ color: #88da6c; }
+        
+        .databutton {
+			background: #eaaa3a;
+        }
+        .datatext { color: #eaaa3a; }
+        
+        .publicationbutton {
+	        background: #79c3ee;
+        }
+        .publicationtext { color: #79c3ee; }
+        
+        .posterbutton {
+	        background: #ee79ee;
+        }
+        .postertext { color: #ee79ee; }
+
+		.abstractsbutton {
+	        background: #647482;
+        }
+        .abstractstext { color: #647482; }
+        
+        .posterbutton {
+	        background: #ee79ee;
+        }
+        .postertext { color: #ee79ee; }
+
+        .analysisbutton {
+	        background: #ee7979;
+        }
+		.analysistext { color: #ee7979; }
+		
+        .modelingbutton {
+	        background: #dfd56d;
+        } 
+        .modelingtext { color: #dfd56d; } 
+        
+        .plannedbutton {
+	        background: #ffffff;
+        }      
+        .plannedtext { color: #dfd56d; }         
+                               
+      </style> 
+  
+  </head>
+
+  <body>
+
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="page-header">
+        <h3><a href="index.html">Optimizing Memory using Neural Information (OMNI)</a></h3>
+        <h1><span class="datatext">Data Release 2</span>: Forgetting curves and MRI activations from independent components analysis</h1>
+      </div>
+      <p class="lead">
+      Data Release 2 consists of a CSV (comma delimited) datafile containing information about the memory performance of
+      N=190 participants memorizing 45 Lithuanian-English word translations.  Each item was presented five times for
+      study and then people were tested at a variety of delays ranging from 0 to 168 hours after the initial
+      study session.  Participants also provided a judgement of learning (JOL) on a 100 point scale after study
+      rating the likelihood they believed they would remember the word pair at test.
+      <br>
+      <br>
+      This release also includes fMRI activation estimates from the study trials from a subset of the participants. The activation estimates are the single trial response (average of timepoints 4-8 post trial onset) for each of a set of independent fmri components identified using group ICA implemented using the <a href="http://mialab.mrn.org/software/gift/">GIFT-ICA toolbox</a>.
+      </p>
+      
+      
+      <p class="lead">
+	  The purpose of this data release is to share a relatively large dataset of human memory
+	  performance on a simple list-learning second language acquisition task.  The data can be used to
+	  help build and test models of human memory.
+      </p>
+      
+      <hr>
+      
+      <img src="images/osf_logo.png" width="40" style="margin: 5px" align="left">
+      <img src="images/github_logo.png" width="40" style="margin: 5px" align="left">
+	  The data is available on github here: <a href="https://github.com/NYUCCL/omni_releases/tree/master/data_release_2">https://github.com/NYUCCL/omni_releases/tree/master/data_release_2</a>.<br>
+	  
+	  The data and Jupyter notebook is also downloadable from Open Science Framework: <a href="https://osf.io/etv5y/">UPDATE OPEN SCIENCE LINK</a>.
+
+      <hr>
+      
+      <p>
+      The datafile also includes a <a href="http://jupyter.org/">Jupyter</a> 
+      notebook that describes the structure of the CSV file and shows a few example analyses with the datafile including a plot of the overall
+      performance as a function of delay between study and test and the relationship that judgements
+      of learning have to performance.  As an example, it shows how to use the data frame (using Pandas)
+      to plot the overall percent of the total list words that were recalled by individual participants
+      as a function of study-test lag:
+      </p>
+      
+      <img src="images/data/data_release_1-delay.png" valign="center">
+      
+      <p>
+	  In addition, it shows how average JOL rating was strongly correlated with mean recall accuracy.
+      </p>
+      <img src="images/data/data_release_1-jols.png" valign="center">
+
+
+      <p>
+	  There are also examples for examining the MRI activations on each study trial for a particular word 
+	  in a single participant.
+      </p>
+	  <hr>
+	  
+	  
+	  <!--
+      <div class="page-header">
+        <h2>Other Releases</h2>
+      </div>
+      <p class="maintext">
+      There are seven categories of project releases: <span class="datatext">data</span>, <span class="publicationtext">publications</span>, <span class="postertext">posters</span>, <span class="abstractstext">abstracts</span>, <span class="analysistext">analysis scripts</span>, <span class="modelingtext">modeling code</span>,
+      and <span class="blogtext">blog posts/news</span>.
+      The following list shows all current and planned data releases (white buttons are planned and upcoming releases):
+      </p>
+           
+      <div class="page-header">
+        <h3>Support</h3>
+      </div>
+      <p class="maintext">
+      The project is currently supported by National Science Foundation grant <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1631436&HistoricalAwards=false">DRL-1631436</a> and by a startup grant from the NYU <a href="http://as.nyu.edu/science.html">College of Arts and Science</a>.
+      </p>
+      
+      -->
+
+
+    </div>
+
+	
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">(c) 2017 <a href="http://gureckislab.org">gureckislab.org</a></p>
+      </div>
+    </footer>
+
+
+	<script src="js/jquery.mixitup.min.js"></script>
+
+  </body>
+</html>
